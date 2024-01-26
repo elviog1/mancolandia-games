@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function BottomBar() {
   const pathName = usePathname();
   return (
-    <div className="flex sticky md:hidden w-full px-4 py-2 justify-between bottom-0 z-20">
+    <div className="flex sticky md:hidden w-full px-4 py-2 justify-between bottom-0 z-20 bg-gray-950">
       {sidebarLinks.map((link) => {
         const isActive = pathName === link.route;
         return (

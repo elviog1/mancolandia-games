@@ -1,5 +1,4 @@
 "use client";
-import { UserButton } from "@clerk/nextjs";
 import { Search } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -12,16 +11,16 @@ export default function TopBar() {
       <div className="flex">
         <input
           type="text"
+          className="w-full py-2 px-4 rounded-lg text-black"
           placeholder="Search posts, peoples..."
           value={search}
-          onChange={(e) => e.target.value}
-          className="w-full py-2 px-4 rounded-lg"
+          onChange={(e) => setSearch(e.target.value)}
         />
         <Search
           sx={{ color: "black", fontSize: "34px" }}
           className="bg-white hover:text-blue-900 top-1 cursor-pointer relative right-9 rounded-lg"
           onClick={() => {
-            console.log("first");
+            router.push(`/search/posts/${search}`)
           }}
         />
       </div>
@@ -32,7 +31,6 @@ export default function TopBar() {
         New Post
       </button>
       <div className="hidden max-md:block">
-        <UserButton />
       </div>
     </div>
   );
