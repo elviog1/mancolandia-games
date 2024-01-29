@@ -12,7 +12,6 @@ const FormPage = ({post, apiEndpoint}) => {
   const [description, setDescription] = useState(post.description);
   const {data:session} = useSession()
   const router = useRouter()
-  //console.log(session)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +29,7 @@ const FormPage = ({post, apiEndpoint}) => {
       });
   
       if (response.ok) {
-        router.push(`/profile/${session?.user.id}`);
+        router.push(`/profile/${session?.user.id}/posts`);
       } else {
         // Mostrar mensaje de error al usuario
         console.error("Error al enviar el formulario:", response.statusText);

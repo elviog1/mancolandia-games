@@ -10,8 +10,8 @@ export default function Home() {
   const getAllPosts = async () => {
     const response = await fetch("/api/post");
     const data = await response.json();
-    setAllPosts(data.reverse());
-    setLoading(!loading);
+    setAllPosts(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Home() {
       ) : (
         <div className="flex flex-col gap-6">
           {allposts.map((post) => (
-            <PostCard key={post._id} post={post} />
+            <PostCard key={post._id} post={post} update={getAllPosts} />
           ))}
         </div>
       )}

@@ -24,7 +24,6 @@ export const POST = async (req,{params}) =>{
         return new Response(JSON.stringify(user),{status:200})
 
     } catch (error) {
-        console.log(error)
         return new Response("Failed to save/unsave post", {status:500})
     }
 }

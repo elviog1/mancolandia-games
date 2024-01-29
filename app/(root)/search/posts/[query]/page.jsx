@@ -29,7 +29,7 @@ export default function SearchPosts() {
         </div>
 
         {searchedPosts.map(post => (
-            <PostCard post={post} key={post._id}  />
+            <PostCard post={post} key={post._id} update={getSearchedPosts} />
         ))}
     </div>
   )

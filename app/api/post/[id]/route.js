@@ -10,7 +10,6 @@ export const GET = async (req, { params }) => {
       .exec();
     return new Response(JSON.stringify(post), { status: 200 });
   } catch (error) {
-    console.log(error);
     return new Response("Failed to get post", { status: 500 });
   }
 };
@@ -40,3 +39,14 @@ export const POST = async (req,{params}) => {
     return new Response("Failed to update the post", { status: 500 });
   }
 };
+
+export const DELETE = async (req,{params})=>{
+  try {
+    await connectToDB()
+    await Post.findByIdAndDelete(params.id)
+
+    return new Response("Post is deleted",{status:200})
+  } catch (error) {
+    return new Response("Failed to delete post",{status:500})
+  }
+}

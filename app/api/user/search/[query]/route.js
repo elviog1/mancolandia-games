@@ -12,7 +12,6 @@ export const GET = async(req,{params})=>{
         }).populate("posts savedPosts likedPosts followers following").exec()
         return new Response(JSON.stringify(searchPosts),{status:200})
     } catch (error) {
-        console.log(error)
         return new Response("Failed to search", {status:500})
     }
 }

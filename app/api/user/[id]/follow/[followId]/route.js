@@ -15,7 +15,6 @@ export const POST = async (req, { params }) => {
     const isFollowing = user?.following.find(
       (item) => item._id.toString() === followId
     );
-    console.log(isFollowing)
     if (isFollowing) {
       user.following = user.following.filter(
         (item) => item._id.toString() !== followId
@@ -33,7 +32,6 @@ export const POST = async (req, { params }) => {
 
     return new Response(JSON.stringify(user), { status: 200 });
   } catch (error) {
-    console.log(error);
     return new Response("Failed to follow/unfollow", { status: 500 });
   }
 };

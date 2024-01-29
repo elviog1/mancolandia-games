@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 import Loader from "./Loader";
 
 export default function UserCard({ userData , update }) {
-  console.log(userData);
   const { data: session } = useSession();
   const [loading, setLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});

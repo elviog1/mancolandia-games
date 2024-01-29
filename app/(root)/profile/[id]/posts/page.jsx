@@ -33,7 +33,7 @@ export default function ProfilePage() {
       <ProfileCard userData={userData} activeTab="Posts" />
       <div className="flex flex-col gap-9">
         {userData?.posts?.map(post => (
-          <PostCard key={post._id} post={post} />
+          <PostCard key={post._id} post={post} update={getUser} />
         ))}
       </div>
     </div>

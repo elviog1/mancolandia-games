@@ -12,14 +12,14 @@ export const POST = async (req,{params}) =>{
         const user = await User.findById(userId).populate("posts savedPosts likedPosts following followers")
         const post = await Post.findById(postId).populate("creator likes")
 
-        const isLiked = user.likedPost.find(item => item._id.toString() === postId)
+        const isLiked = user.likedPosts.find(item => item._id.toString() === postId)
 
         if(isLiked){
-            user.likedPost = user.likedPost.filter(item => item._id.toString() !== postId)
+            user.likedPosts = user.likedPosts.filter(item => item._id.toString() !== postId)
             post.likes = post.likes.filter(item => item._id.toString() !== user._id.toString())
         }else{
-            user.likedPost.push(post)
-            post.likes.push(user)
+            user.likedPosts.push(post._id)
+            post.likes.push(user._id)
         }
 
         await user.save()
@@ -27,7 +27,6 @@ export const POST = async (req,{params}) =>{
         return new Response(JSON.stringify(user),{status:200})
 
     } catch (error) {
-        console.log(error)
         return new Response("Failed to like/dislike post", {status:500})
     }
 }

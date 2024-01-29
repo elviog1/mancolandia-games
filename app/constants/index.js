@@ -1,7 +1,7 @@
 import HomeIcon from '@mui/icons-material/Home';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import GroupIcon from '@mui/icons-material/Group';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import { BookmarksOutlined, FavoriteBorder } from '@mui/icons-material';
 export const sidebarLinks = [
   {
     icon: <HomeIcon sx={{ color: "white", fontSize: "26px" }} />,
@@ -21,9 +21,14 @@ export const sidebarLinks = [
     label: "People",
   },
   {
-    icon: <ManageAccountsIcon sx={{ color: "white", fontSize: "26px" }} />,
-    route: "/edit-profile",
-    label: "Edit Profile",
+    icon: <BookmarksOutlined sx={{ color: "white", fontSize: "26px" }} />,
+    route: "/saved-posts",
+    label: "Saved Posts",
+  },
+  {
+    icon: <FavoriteBorder sx={{ color: "white", fontSize: "26px" }} />,
+    route: "/liked-posts",
+    label: "Liked Posts",
   },
 ];
 
@@ -31,10 +36,6 @@ export const pageTitles = [
   {
     title:'Home',
     url:'/'
-  },
-  {
-    title:'Edit Profile',
-    url:'/edit-profile'
   },
   {
     title:'Create Post',
@@ -47,6 +48,18 @@ export const pageTitles = [
   {
     title:'Search',
     url:'/search'
+  },
+  {
+    title:'People',
+    url:'/people'
+  },
+  {
+    title:'Saved Posts',
+    url:'/saved-posts'
+  },
+  {
+    title:'Liked Posts',
+    url:'/liked-posts'
   },
 ]
 

@@ -33,7 +33,7 @@ export default function LeftSideBar() {
   return (
     <div className="h-screen flex flex-col justify-between gap-6 items-center p-4 overflow-auto sticky top-0 left-0 max-md:hidden max-w-72 w-full">
       <Link href="/">
-        <p>Mancolandia Games</p>
+        <p className="text-3xl font-serif">Mancolandia</p>
       </Link>
 
       <div className="flex flex-col gap-2 items-center">
@@ -72,18 +72,9 @@ export default function LeftSideBar() {
         </div>
       )}
       <div className="flex gap-4 items-center">
-        {/* <UserButton /> */}
-        {/* <p>Manage Account</p> */}
         <ButtomGoogle />
       </div>
-      {/* <SignedIn>
-        <SignOutButton>
-          <div className="flex gap-3 items-center cursor-pointer">
-            <Logout />
-            <p>Log Out</p>
-          </div>
-        </SignOutButton>
-      </SignedIn> */}
+
     </div>
   );
 }

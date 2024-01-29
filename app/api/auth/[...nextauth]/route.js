@@ -17,7 +17,6 @@ const handler = NextAuth({
       return session;
     },
     async signIn({profile}){
-      console.log(profile)
       try {
         await connectToDB()
 
@@ -31,7 +30,6 @@ const handler = NextAuth({
         }
         return true
       } catch (error) {
-        console.log(error)
         return false
       }
     }

@@ -17,7 +17,6 @@ export default function EditPost() {
     const data = await response.json();
     setPostData(data);
     setLoading(!loading);
-    console.log(data);
   };
 
   useEffect(() => {

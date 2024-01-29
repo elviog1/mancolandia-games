@@ -12,7 +12,7 @@ export default function BottomBar() {
         return (
           <Link
             key={link.label}
-            className={`flex gap-2 py-2 px-4 rounded-lg hover:bg-blue-800 duration-200 justify-start ${
+            className={`flex items-center gap-2 py-2 px-4 rounded-lg hover:bg-blue-800 duration-200 justify-start ${
               isActive && "bg-blue-800"
             } `}
             href={link.route}

@@ -3,6 +3,7 @@ import {
   Bookmark,
   BookmarkBorder,
   BorderColor,
+  Delete,
   Favorite,
   FavoriteBorder,
 } from "@mui/icons-material";
@@ -11,7 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-export default function PostCard({ post }) {
+export default function PostCard({ post,update }) {
   const { data: session } = useSession();
   const [userData, setUserData] = useState({});
 
@@ -40,6 +41,7 @@ export default function PostCard({ post }) {
     );
     const data = await response.json();
     setUserData(data);
+    update()
   };
 
   const handleLike = async () => {
@@ -54,7 +56,16 @@ export default function PostCard({ post }) {
     );
     const data = await response.json();
     setUserData(data);
+    update()
   };
+
+  const handleDelete = async ()=>{
+    await fetch(`/api/post/${post._id}`,{
+      method:'DELETE'
+    })
+    update()
+
+  }
 
   return (
     <div
@@ -105,7 +116,7 @@ export default function PostCard({ post }) {
             />
           ) : (
             <Favorite
-              sx={{ color: "white", cursor: "pointer" }}
+              sx={{ color: "red", cursor: "pointer" }}
               onClick={() => handleLike()}
             />
           )}
@@ -115,7 +126,7 @@ export default function PostCard({ post }) {
         {session?.user.id !== post.creator._id &&
           (isSaved ? (
             <Bookmark
-              sx={{ color: "blue", cursor: "pointer" }}
+              sx={{ color: "skyblue", cursor: "pointer" }}
               onClick={() => handleSave()}
             />
           ) : (
@@ -124,6 +135,8 @@ export default function PostCard({ post }) {
               onClick={() => handleSave()}
             />
           ))}
+
+          {session?.user.id === post.creator._id && (<Delete sx={{color:"white", cursor:"pointer"}} onClick={()=> handleDelete()} />)}
       </div>
     </div>
   );

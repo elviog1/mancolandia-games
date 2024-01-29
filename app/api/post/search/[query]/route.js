@@ -13,7 +13,6 @@ export const GET = async(req,{params})=>{
         }).populate("creator likes").exec()
         return new Response(JSON.stringify(searchPosts),{status:200})
     } catch (error) {
-        console.log(error)
         return new Response("Failed to search", {status:500})
     }
 }

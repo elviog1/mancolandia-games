@@ -10,7 +10,6 @@ export default function ProfileCard({ userData, activeTab }) {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
-  console.log(session?.user?.id);
   const getUser = async () => {
     const response = await fetch(`/api/user/${session.user.id}`, {
       method: "GET",
@@ -60,7 +59,7 @@ export default function ProfileCard({ userData, activeTab }) {
           />
           <div className="flex flex-col gap-2">
             <p className="text-2xl font-semibold">{userData?.name}</p>
-            <div className="flex gap-6 text-lg">
+            <div className="flex gap-6 text-lg flex-wrap">
               <div className="flex gap-2 items-center">
                 <p className="text-blue-500 font-semibold">
                   {userData?.posts?.length}
